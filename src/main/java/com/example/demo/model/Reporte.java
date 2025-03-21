@@ -1,19 +1,34 @@
 package com.example.demo.model;
 
-import java.rmi.server.ObjID;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.bson.types.ObjectId;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Document(collection = "reportes")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Reporte {
-    ArrayList<HistorialReporte> historialReporte;
-    LocalDate fecha;
-    String descripcion;
-    int contador;
-    Usuario usuario;
-    String titulo;
-    Ubicacion ubicacion;
-    ObjID id;
-    Categoria categoria;
-    ArrayList<String> fotos;
-    EstadoReporte estado;
+
+    @Id
+    private ObjectId id;
+
+    private String descripcion;
+    private String titulo;
+    private int contadorImportante;
+    private LocalDateTime fecha;
+
+    private ObjectId clienteId;
+    private ObjectId categoriaId;
+    private EstadoReporte estadoActual;
+    
+    private List<ObjectId> comentariosIds;
+    private List<String> fotos;
+    private Ubicacion ubicacion;
+    private List<ObjectId> historialIds;
 }
