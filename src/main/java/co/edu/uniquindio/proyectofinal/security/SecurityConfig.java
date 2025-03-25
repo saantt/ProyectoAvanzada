@@ -34,12 +34,12 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+   /*  @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf().disable()
             .authorizeHttpRequests()
-            .requestMatchers("/auth/**").permitAll()
+            .requestMatchers("/public/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .sessionManagement()
@@ -48,5 +48,21 @@ public class SecurityConfig {
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+    } */
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                // Permitir acceso sin autenticación a los endpoints de Swagger
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                // Otras rutas permitidas
+                .requestMatchers("/public/**").permitAll()
+                // El resto requiere autenticación
+                .anyRequest().authenticated()
+            );
+        return http.build();
     }
+    
+    
 }
