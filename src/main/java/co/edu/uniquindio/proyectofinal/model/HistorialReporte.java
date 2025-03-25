@@ -22,4 +22,5 @@ public class HistorialReporte {
     private EstadoReporte estadoNuevo;
     private LocalDateTime fechaCambio;
     private ObjectId usuarioResponsableId;
+
 }

@@ -17,6 +17,7 @@ public class Notificacion {
     @Id
     private ObjectId id;
 
+    private ObjectId usuarioId;
     private String mensaje;
     private ObjectId usuarioDestinoId;
     private LocalDateTime fechaCreacion;

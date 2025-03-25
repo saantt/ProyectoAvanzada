@@ -9,5 +9,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface ReporteRepository extends MongoRepository<Reporte, ObjectId> {
-    List<Reporte> findByEstadoActual(String estado);
+    List<Reporte> findByEstadoActual(String estadoActual);
 }

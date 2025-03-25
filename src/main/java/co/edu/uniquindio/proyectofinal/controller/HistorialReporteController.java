@@ -1,14 +1,15 @@
 package co.edu.uniquindio.proyectofinal.controller;
 
-import co.edu.uniquindio.proyectofinal.HistorialReporte;
-import co.edu.uniquindio.proyectofinal.HistorialReporteService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import co.edu.uniquindio.proyectofinal.model.HistorialReporte;
+import co.edu.uniquindio.proyectofinal.service.HistorialReporteService;
+
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/historial-reportes")
